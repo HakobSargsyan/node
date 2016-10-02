@@ -1,0 +1,30 @@
+h1 ADMIN PANEL
+h2 Create a new Widget
+    form.form-horizontal(action="create",method="GET")
+        button.btn.btn-primary(type="submit") Create
+        .table-responsive
+        table.table.table-inverse
+            thead
+                tr
+                th Name
+                th Price
+                th Description
+                th Edit
+                th Delete
+            tbody
+                if widgets
+            each widget in widgets
+                tr
+                td #{widget.name}
+                td #{widget.price} $
+                td #{widget.desc}
+                td 
+                    form.form-horizontal(action="/widget/#{widget.id}/edit",method="POST")
+                        input(name='_method', type='hidden', value='put')
+                        button.btn.btn-primary(type="submit") Edit
+                td 
+                    form.form-horizontal(action="/widget/#{widget.id}/delete",method="POST")
+                        input(name='_method', type='hidden', value='delete')
+                        button.btn.btn-danger(type="submit") Delete
+            - else
+                p Not found Data            

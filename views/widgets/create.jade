@@ -1,0 +1,12 @@
+form(action='add',method="POST")
+  .form-group
+    label(for='email') Widget Name:
+    input#email.form-control(type='text',name='name')
+  .form-group
+    label(for='pwd') Widget Price:
+    input#pwd.form-control(type='text',name='price')
+  .form-group
+    label(for='pwd') Description:
+    input#pwd.form-control(type='text',name='desc')
+  button.btn.btn-default(type='submit') Cancel
+  button.btn.btn-default(type='submit') Submit
