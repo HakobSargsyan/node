@@ -1,0 +1,29 @@
+{
+  "name": "custom-crud",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "express": "2.5.8",
+    "jade": ">= 0.0.1"
+  },
+  "description": "generate custom widgets",
+  "main": "app.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "widget:generate"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HakobSargsyan/node.git"
+  },
+  "keywords": [
+    "widget",
+    "generate"
+  ],
+  "author": "Hakob Sargsyan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HakobSargsyan/node/issues"
+  },
+  "homepage": "https://github.com/HakobSargsyan/node#readme"
+}
