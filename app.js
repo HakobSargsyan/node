@@ -4,7 +4,11 @@
  */
 var express = require('express')
   ,fs = require('fs')
+  ,flash = require('connect-flash')
   , routes = require('./routes');
+
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
 
 //Express create a new Server
 var app = module.exports = express.createServer();
@@ -17,6 +21,9 @@ app.configure(function(){
   app.use(express.methodOverride());
   app.use(express.favicon());
   app.use(app.router);
+  app.use(cookieParser('secret'));
+  app.use(session({secret: 'mySecret', resave: false, saveUninitialized: false}));
+  app.use(flash());
   app.use(express.static(__dirname + '/public'));
 });
 

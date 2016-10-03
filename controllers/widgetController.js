@@ -1,16 +1,42 @@
 var widgets = [{
 	id:1,
-	name:'Custom widget',
+	name:'Custom widget-1',
 	price:'5',
 	desc:'widget for alert'
+},{
+	id:2,
+	name:'Custom widget-2',
+	price:'5',
+	desc:'widget for Form'
+},{
+	id:3,
+	name:'Custom widget-3',
+	price:'5',
+	desc:'widget for Pagination'
+},{
+	id:4,
+	name:'Custom widget-4',
+	price:'5',
+	desc:'widget for Bootstrap'
+},{
+	id:5,
+	name:'Custom widget-5',
+	price:'5',
+	desc:'widget for Custom Validation'
 }];
 
 module.exports = function(app){
+
 	/**
 	* Show AllWidgets
 	*/
 	app.get('/', function(req, res) {
-		res.render('./widgets/index',{widgets:widgets});
+		if(widgets.length){
+			res.render('./widgets/index',{widgets:widgets});
+		}
+		else{
+			res.render('./widgets/index',{widgets:null});	
+		}
 	});
 
 	/**
@@ -43,27 +69,35 @@ module.exports = function(app){
 	* Edit Widget
 	*/
 	app.post('/widget/:id/edit', function(req, res) {
-		res.render('./widgets/edit')
+		var indx = req.params.id - 1
+		res.render('./widgets/edit',{widgets:widgets[indx]});
 	});
 
 	/**
 	* Delete Widget
-	* inProgress
 	*/
 	app.del('/widget/:id/delete', function(req, res) {
-		if(req.params.id==1){
-			delete widgets[0];
-		}else{
-			delete widgets[req.params.id];
-		}
-		res.render('./widgets/index',{widgets:widgets})
+		var indx = req.params.id - 1
+		delete widgets[indx];
+		newWidgets = [];
+		widgets.forEach(function(widget){
+			newWidgets.push(widget);
+		})
+	    res.render('./widgets/index', { widgets: newWidgets });
 	});
 
 	/**
 	* Update Widget
 	*/
 	app.put('/widget/:id/update', function(req, res) {
-		res.render('./widgets/update')
+		var indx = req.params.id - 1;
+		widgets[indx] = {
+			id:indx,
+			name:req.body.name,
+			price:req.body.price,
+			desc:req.body.desc,
+		}
+		res.render('./widgets/index',{widgets:widgets})
 	});
 };	
 	

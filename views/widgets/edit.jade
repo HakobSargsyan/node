@@ -1,0 +1,14 @@
+form(action='/widget/#{widgets.id}/update',method="POST")
+  input(name='_method', type='hidden', value='put')
+  .form-group
+    label(for='email') Widget Name:
+    input#email.form-control(type='text',name='name',value='#{widgets.name}')
+  .form-group
+    label(for='pwd') Widget Price:
+    input#pwd.form-control(type='text',name='price',value='#{widgets.price}')
+  .form-group
+    label(for='pwd') Description:
+    input#pwd.form-control(type='text',name='desc',value='#{widgets.desc}')
+  button.btn.btn-default(type='submit') 
+    a(href='/widgets/index') Cancel
+  button.btn.btn-default(type='submit') Submit
